@@ -1,0 +1,536 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Portafolio – Wendy Salgado · Docente EdTech & IA Educativa</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,700;0,800;1,400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --green:   #1A7A4A;
+    --green2:  #25A066;
+    --green3:  #E8F7EF;
+    --dark:    #111827;
+    --mid:     #374151;
+    --soft:    #6B7280;
+    --rule:    #E5E7EB;
+    --bg:      #F8FAF9;
+    --white:   #FFFFFF;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body { font-family: 'Inter', sans-serif; background: var(--bg); color: var(--dark); }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed; top: 0; width: 100%; z-index: 100;
+    background: var(--dark);
+    padding: 0 2.5rem; height: 58px;
+    display: flex; align-items: center; justify-content: space-between;
+    border-bottom: 2px solid var(--green);
+  }
+  .nav-brand {
+    font-family: 'Playfair Display', serif;
+    color: var(--white); font-size: 1rem; font-weight: 700; letter-spacing: 1px;
+  }
+  .nav-brand span { color: var(--green2); }
+  .nav-links { display: flex; gap: 2rem; }
+  .nav-links a {
+    color: rgba(255,255,255,0.6); text-decoration: none;
+    font-size: 0.76rem; font-weight: 500;
+    letter-spacing: 0.8px; text-transform: uppercase; transition: color 0.2s;
+  }
+  .nav-links a:hover { color: white; }
+
+  /* ── HERO ── */
+  .hero {
+    min-height: 100vh;
+    background: var(--dark);
+    display: flex; align-items: center;
+    padding: 80px 2.5rem 60px;
+    position: relative; overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute; top: -100px; right: -100px;
+    width: 500px; height: 500px; border-radius: 50%;
+    border: 70px solid rgba(26,122,74,0.08);
+  }
+  .hero::after {
+    content: ''; position: absolute;
+    bottom: 0; left: 0; right: 0; height: 80px;
+    background: linear-gradient(to bottom, transparent, var(--bg));
+  }
+
+  .hero-inner {
+    max-width: 1080px; margin: 0 auto; width: 100%;
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 4rem; align-items: center;
+    position: relative; z-index: 1;
+  }
+
+  .hero-tag {
+    display: inline-flex; align-items: center; gap: 6px;
+    background: rgba(26,122,74,0.2);
+    border: 1px solid rgba(37,160,102,0.4);
+    color: #6EE7A0; font-size: 0.68rem; font-weight: 600;
+    letter-spacing: 1.5px; text-transform: uppercase;
+    padding: 5px 14px; border-radius: 100px; margin-bottom: 1.2rem;
+  }
+  .hero-tag::before { content:''; width:5px; height:5px; background:#6EE7A0; border-radius:50%; }
+
+  .hero h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2.4rem, 4.5vw, 3.5rem);
+    font-weight: 800; color: white; line-height: 1.08; margin-bottom: 1rem;
+  }
+  .hero h1 em { font-style: italic; color: #6EE7A0; }
+
+  .hero-sub {
+    color: rgba(255,255,255,0.6); font-size: 0.93rem;
+    line-height: 1.8; margin-bottom: 2rem; max-width: 460px;
+  }
+
+  .hero-btns { display: flex; gap: 1rem; flex-wrap: wrap; }
+  .btn-solid {
+    background: var(--green); color: white;
+    font-weight: 700; font-size: 0.8rem;
+    padding: 11px 22px; border-radius: 4px;
+    text-decoration: none; transition: background 0.2s;
+  }
+  .btn-solid:hover { background: var(--green2); }
+  .btn-ghost {
+    border: 1px solid rgba(255,255,255,0.25); color: white;
+    font-size: 0.8rem; padding: 11px 22px;
+    border-radius: 4px; text-decoration: none; transition: all 0.2s;
+  }
+  .btn-ghost:hover { border-color: white; }
+
+  .hero-stats {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;
+  }
+  .stat {
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 10px; padding: 1.2rem 1.3rem;
+    transition: border-color 0.2s, transform 0.2s;
+  }
+  .stat:hover { border-color: var(--green2); transform: translateY(-2px); }
+  .stat-n {
+    font-family: 'Playfair Display', serif;
+    font-size: 2rem; font-weight: 700; color: #6EE7A0;
+  }
+  .stat-l { font-size: 0.72rem; color: rgba(255,255,255,0.45); text-transform: uppercase; letter-spacing: 0.5px; margin-top: 3px; }
+
+  /* ── SECTIONS ── */
+  section { padding: 80px 2.5rem; }
+  .container { max-width: 1080px; margin: 0 auto; }
+  .sec-eyebrow { font-size: 0.65rem; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; color: var(--green); margin-bottom: 5px; }
+  .sec-title { font-family: 'Playfair Display', serif; font-size: clamp(1.7rem, 3vw, 2.2rem); font-weight: 800; color: var(--dark); margin-bottom: 6px; }
+  .sec-sub { font-size: 0.88rem; color: var(--soft); max-width: 520px; margin-bottom: 2.5rem; line-height: 1.7; }
+
+  /* ── SOBRE MÍ ── */
+  #sobre { background: var(--white); }
+  .sobre-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: start; }
+  .sobre-text p { font-size: 0.88rem; color: var(--mid); line-height: 1.8; margin-bottom: 1rem; }
+  .sobre-text strong { color: var(--dark); }
+
+  .skills-wrap { display: flex; flex-wrap: wrap; gap: 8px; }
+  .sk-tag {
+    background: var(--green3);
+    border: 1px solid rgba(26,122,74,0.15);
+    color: var(--green);
+    font-size: 0.74rem; font-weight: 500;
+    padding: 5px 12px; border-radius: 4px;
+    display: flex; align-items: center; gap: 6px;
+  }
+  .sk-tag::before { content:''; width:5px; height:5px; background:var(--green); border-radius:50%; }
+
+  /* ── HERRAMIENTAS ── */
+  #tools { background: var(--dark); }
+  .tools-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(130px,1fr)); gap: 1rem; }
+  .tool-card {
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 10px; padding: 1.3rem 1rem;
+    text-align: center; transition: all 0.25s; cursor: default;
+  }
+  .tool-card:hover { background: rgba(26,122,74,0.2); border-color: var(--green2); transform: translateY(-3px); }
+  .tool-ico { font-size: 1.8rem; margin-bottom: 7px; }
+  .tool-nm { color: white; font-size: 0.82rem; font-weight: 600; margin-bottom: 2px; }
+  .tool-lv { color: #6EE7A0; font-size: 0.68rem; }
+
+  /* ── PROYECTOS ── */
+  #proyectos { background: var(--bg); }
+  .proj-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px,1fr)); gap: 1.3rem; }
+  .proj-card {
+    background: var(--white); border: 1px solid var(--rule);
+    border-radius: 10px; overflow: hidden; transition: all 0.25s;
+  }
+  .proj-card:hover { transform: translateY(-4px); box-shadow: 0 16px 40px rgba(26,122,74,0.10); border-color: var(--green); }
+  .proj-top { padding: 1.3rem 1.3rem 1rem; border-bottom: 1px solid var(--rule); display: flex; justify-content: space-between; align-items: flex-start; }
+  .proj-ico { width: 44px; height: 44px; background: var(--green3); border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 1.3rem; }
+  .badge { font-size: 0.62rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; padding: 3px 9px; border-radius: 100px; }
+  .badge-done { background:#D1FAE5; color:#065F46; }
+  .badge-todo { background:#FEF3C7; color:#92400E; }
+  .proj-body { padding: 1.1rem 1.3rem 1.3rem; }
+  .proj-title { font-family: 'Playfair Display', serif; font-size: 1rem; font-weight: 700; color: var(--dark); margin-bottom: 6px; }
+  .proj-desc { font-size: 0.78rem; color: var(--soft); line-height: 1.65; margin-bottom: 10px; }
+  .proj-tags { display: flex; flex-wrap: wrap; gap: 5px; }
+  .ptag { background: var(--green3); color: var(--green); font-size: 0.65rem; font-weight: 600; padding: 2px 9px; border-radius: 100px; }
+  .proj-hint { margin-top: 10px; padding: 7px 10px; border: 1.5px dashed rgba(26,122,74,0.3); border-radius: 6px; font-size: 0.72rem; color: var(--green); display: flex; align-items: center; gap: 6px; }
+
+  /* ── SERVICIOS ── */
+  #servicios { background: var(--white); }
+  .serv-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px,1fr)); gap: 1.2rem; }
+  .serv-card { background: var(--bg); border: 1px solid var(--rule); border-radius: 10px; padding: 1.6rem 1.4rem; transition: all 0.25s; }
+  .serv-card:hover { border-color: var(--green); transform: translateY(-2px); box-shadow: 0 10px 30px rgba(26,122,74,0.08); }
+  .serv-ico { font-size: 1.7rem; margin-bottom: 10px; }
+  .serv-title { font-family: 'Playfair Display', serif; font-size: 1rem; font-weight: 700; color: var(--dark); margin-bottom: 6px; }
+  .serv-desc { font-size: 0.78rem; color: var(--soft); line-height: 1.65; margin-bottom: 10px; }
+  .serv-price { font-size: 0.7rem; font-weight: 700; color: var(--green); text-transform: uppercase; letter-spacing: 0.5px; }
+
+  /* ── EXPERIENCIA ── */
+  #experiencia { background: var(--bg); }
+  .timeline { padding-left: 1.8rem; position: relative; }
+  .timeline::before { content: ''; position: absolute; left: 5px; top: 0; bottom: 0; width: 2px; background: linear-gradient(to bottom, var(--green), rgba(26,122,74,0.1)); }
+  .tl-item { position: relative; margin-bottom: 2rem; }
+  .tl-dot { position: absolute; left: -1.8rem; width: 12px; height: 12px; background: var(--green); border-radius: 50%; border: 3px solid var(--bg); top: 4px; }
+  .tl-top { display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 6px; margin-bottom: 2px; }
+  .tl-role { font-family: 'Playfair Display', serif; font-size: 1rem; font-weight: 700; color: var(--dark); }
+  .tl-period { font-size: 0.68rem; font-weight: 700; color: var(--green); background: var(--green3); padding: 2px 10px; border-radius: 100px; }
+  .tl-company { font-size: 0.75rem; font-weight: 600; color: var(--soft); margin-bottom: 8px; text-transform: uppercase; letter-spacing: 0.5px; }
+  .tl-list { list-style: none; }
+  .tl-list li { font-size: 0.8rem; color: var(--mid); line-height: 1.7; padding: 2px 0 2px 14px; position: relative; }
+  .tl-list li::before { content: '›'; position: absolute; left: 0; color: var(--green); font-weight: 700; }
+
+  /* ── CONTACTO ── */
+  #contacto { background: var(--dark); padding: 80px 2.5rem; }
+  .contacto-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: start; }
+  .co-item { display: flex; align-items: center; gap: 1rem; margin-bottom: 1.2rem; }
+  .co-ico { width: 42px; height: 42px; background: rgba(26,122,74,0.2); border: 1px solid rgba(37,160,102,0.3); border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 1rem; flex-shrink: 0; }
+  .co-info .lbl { color: rgba(255,255,255,0.4); font-size: 0.65rem; text-transform: uppercase; letter-spacing: 0.5px; }
+  .co-info .val { color: white; font-weight: 500; font-size: 0.82rem; }
+  .co-info a { color: #6EE7A0; text-decoration: none; }
+  .cta-box { background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 12px; padding: 2rem; text-align: center; }
+  .cta-box h3 { font-family: 'Playfair Display', serif; color: white; font-size: 1.3rem; margin-bottom: 6px; }
+  .cta-box p { color: rgba(255,255,255,0.5); font-size: 0.82rem; margin-bottom: 1.5rem; line-height: 1.65; }
+
+  footer { background: #060D0A; padding: 1.4rem 2.5rem; text-align: center; color: rgba(255,255,255,0.25); font-size: 0.75rem; }
+  footer span { color: var(--green2); }
+
+  .reveal { opacity: 0; transform: translateY(20px); transition: opacity 0.55s ease, transform 0.55s ease; }
+  .reveal.visible { opacity: 1; transform: translateY(0); }
+
+  @media (max-width: 768px) {
+    .hero-inner, .sobre-grid, .contacto-grid { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-brand">W<span>|</span>S · Docente EdTech</div>
+  <div class="nav-links">
+    <a href="#sobre">Sobre mí</a>
+    <a href="#proyectos">Proyectos</a>
+    <a href="#servicios">Servicios</a>
+    <a href="#experiencia">Experiencia</a>
+    <a href="#contacto">Contacto</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-inner">
+    <div>
+      <div class="hero-tag">🎓 Disponible para proyectos y asesorías</div>
+      <h1>Wendy<br><em>Salgado</em><br>Anichiarico</h1>
+      <p class="hero-sub">Licenciada en Pedagogía Infantil especializada en EdTech, IA Educativa y Google Workspace. Diseño experiencias de aprendizaje innovadoras que transforman el aula.</p>
+      <div class="hero-btns">
+        <a href="#proyectos" class="btn-solid">Ver Proyectos</a>
+        <a href="#contacto" class="btn-ghost">Contáctame</a>
+      </div>
+    </div>
+    <div class="hero-stats">
+      <div class="stat"><div class="stat-n">7+</div><div class="stat-l">Años en educación</div></div>
+      <div class="stat"><div class="stat-n">IA</div><div class="stat-l">Integración EdTech</div></div>
+      <div class="stat"><div class="stat-n">G·W</div><div class="stat-l">Google Workspace Certified</div></div>
+      <div class="stat"><div class="stat-n">360°</div><div class="stat-l">Diseño de experiencias</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- SOBRE MÍ -->
+<section id="sobre">
+  <div class="container">
+    <div class="sec-eyebrow">Sobre mí</div>
+    <h2 class="sec-title">Pedagogía que se adapta<br>al mundo digital</h2>
+    <div class="sobre-grid reveal">
+      <div class="sobre-text">
+        <p>Soy Licenciada en Pedagogía Infantil con más de <strong>7 años de experiencia en educación</strong>, especializada en el diseño de estrategias de formación innovadoras que integran tecnología e inteligencia artificial.</p>
+        <p>He evolucionado mi práctica hacia la integración de <strong>ecosistemas digitales (Google Workspace)</strong> y herramientas de IA para optimizar procesos de aprendizaje, automatizar la creación de contenidos y analizar datos de rendimiento estudiantil.</p>
+        <p>Actualmente en el <strong>Colegio Bilingüe Maximino Poitiers</strong>, lidero el nivel de preescolar, grado 1° y 2°, coordinando equipos docentes y transformando el aula con tecnología.</p>
+      </div>
+      <div class="skills-wrap">
+        <span class="sk-tag">Google Workspace</span>
+        <span class="sk-tag">Inteligencia Artificial</span>
+        <span class="sk-tag">Prompting & ChatBots</span>
+        <span class="sk-tag">Plataformas LMS</span>
+        <span class="sk-tag">Google Classroom</span>
+        <span class="sk-tag">Google Sheets</span>
+        <span class="sk-tag">Diseño de Currículum</span>
+        <span class="sk-tag">Análisis de Rendimiento</span>
+        <span class="sk-tag">Liderazgo Pedagógico</span>
+        <span class="sk-tag">Lectoescritura</span>
+        <span class="sk-tag">Pedagogía Conceptual</span>
+        <span class="sk-tag">Comunicación Asertiva</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HERRAMIENTAS -->
+<section id="tools">
+  <div class="container">
+    <div class="sec-eyebrow" style="color:#6EE7A0">Ecosistema Digital</div>
+    <h2 class="sec-title" style="color:white">Herramientas & Plataformas</h2>
+    <p class="sec-sub" style="color:rgba(255,255,255,0.5)">Las tecnologías que integro en el aula y en el diseño de experiencias de aprendizaje.</p>
+    <div class="tools-grid reveal">
+      <div class="tool-card"><div class="tool-ico">🎓</div><div class="tool-nm">Google Classroom</div><div class="tool-lv">Avanzado</div></div>
+      <div class="tool-card"><div class="tool-ico">📊</div><div class="tool-nm">Google Sheets</div><div class="tool-lv">Avanzado</div></div>
+      <div class="tool-card"><div class="tool-ico">🤖</div><div class="tool-nm">IA Generativa</div><div class="tool-lv">Intermedio</div></div>
+      <div class="tool-card"><div class="tool-ico">💬</div><div class="tool-nm">ChatBots</div><div class="tool-lv">Intermedio</div></div>
+      <div class="tool-card"><div class="tool-ico">📁</div><div class="tool-nm">Google Drive</div><div class="tool-lv">Avanzado</div></div>
+      <div class="tool-card"><div class="tool-ico">🖥️</div><div class="tool-nm">Google Meet</div><div class="tool-lv">Avanzado</div></div>
+      <div class="tool-card"><div class="tool-ico">📝</div><div class="tool-nm">Google Docs</div><div class="tool-lv">Avanzado</div></div>
+      <div class="tool-card"><div class="tool-ico">🌐</div><div class="tool-nm">Plataformas LMS</div><div class="tool-lv">Intermedio</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- PROYECTOS -->
+<section id="proyectos">
+  <div class="container">
+    <div class="sec-eyebrow">Portafolio</div>
+    <h2 class="sec-title">Proyectos & Experiencias</h2>
+    <p class="sec-sub">Iniciativas reales implementadas en el aula y proyectos que puedes agregar a medida que los desarrolles.</p>
+    <div class="proj-grid reveal">
+
+      <div class="proj-card">
+        <div class="proj-top">
+          <div class="proj-ico">📊</div>
+          <span class="badge badge-done">Laboral</span>
+        </div>
+        <div class="proj-body">
+          <div class="proj-title">Sistema de Seguimiento Académico en Google Sheets</div>
+          <p class="proj-desc">Diseño de sistema de evaluación automatizado en Google Sheets con seguimiento individual y colectivo del rendimiento estudiantil para preescolar, 1° y 2°.</p>
+          <div class="proj-tags"><span class="ptag">Google Sheets</span><span class="ptag">Automatización</span><span class="ptag">Evaluación</span><span class="ptag">Data</span></div>
+          <div class="proj-hint">💡 Agrega una captura del tablero o describe la metodología</div>
+        </div>
+      </div>
+
+      <div class="proj-card">
+        <div class="proj-top">
+          <div class="proj-ico">🤖</div>
+          <span class="badge badge-done">Laboral</span>
+        </div>
+        <div class="proj-body">
+          <div class="proj-title">IA para Generación de Contenidos Diferenciados</div>
+          <p class="proj-desc">Implementación de herramientas de IA para crear planes de clase adaptados por nivel de aprendizaje, optimizando el tiempo de planeación semanal del equipo docente.</p>
+          <div class="proj-tags"><span class="ptag">IA Generativa</span><span class="ptag">Prompting</span><span class="ptag">Planeación</span><span class="ptag">EdTech</span></div>
+          <div class="proj-hint">💡 Agrega ejemplos de prompts o resultados obtenidos</div>
+        </div>
+      </div>
+
+      <div class="proj-card">
+        <div class="proj-top">
+          <div class="proj-ico">🎓</div>
+          <span class="badge badge-done">Laboral</span>
+        </div>
+        <div class="proj-body">
+          <div class="proj-title">Aula Digital con Google Workspace</div>
+          <p class="proj-desc">Integración completa de Google Workspace (Drive, Docs, Sheets, Meet, Classroom) como eje central del proceso de enseñanza en el Colegio Bilingüe Maximino Poitiers.</p>
+          <div class="proj-tags"><span class="ptag">Google Workspace</span><span class="ptag">Classroom</span><span class="ptag">Meet</span><span class="ptag">Bilingüismo</span></div>
+          <div class="proj-hint">💡 Agrega evidencias fotográficas o métricas de impacto</div>
+        </div>
+      </div>
+
+      <div class="proj-card">
+        <div class="proj-top">
+          <div class="proj-ico">📖</div>
+          <span class="badge badge-done">Laboral</span>
+        </div>
+        <div class="proj-body">
+          <div class="proj-title">Programa de Lectoescritura Lúdico-Tecnológico</div>
+          <p class="proj-desc">Diseño e implementación de programa de lectoescritura y razonamiento lógico-matemático con enfoque lúdico-tecnológico para niños de 3 a 6 años.</p>
+          <div class="proj-tags"><span class="ptag">Pedagogía</span><span class="ptag">Lectoescritura</span><span class="ptag">Lúdica</span><span class="ptag">Preescolar</span></div>
+          <div class="proj-hint">💡 Describe resultados: % mejora en niveles de lectura</div>
+        </div>
+      </div>
+
+      <div class="proj-card">
+        <div class="proj-top">
+          <div class="proj-ico">🧑‍🏫</div>
+          <span class="badge badge-todo">Por agregar</span>
+        </div>
+        <div class="proj-body">
+          <div class="proj-title">Capacitación Docente en Herramientas Digitales</div>
+          <p class="proj-desc">Diseña y documenta un taller de capacitación para docentes en el uso de Google Workspace o IA en el aula. Puede ofrecerse como servicio freelance a colegios.</p>
+          <div class="proj-tags"><span class="ptag">Formación Docente</span><span class="ptag">Google Workspace</span><span class="ptag">IA</span><span class="ptag">Taller</span></div>
+          <div class="proj-hint">🎯 Convierte tu experiencia de inducción en Maximino Poitiers en un taller vendible</div>
+        </div>
+      </div>
+
+      <div class="proj-card">
+        <div class="proj-top">
+          <div class="proj-ico">📋</div>
+          <span class="badge badge-todo">Por agregar</span>
+        </div>
+        <div class="proj-body">
+          <div class="proj-title">Plantilla de Planeación con IA</div>
+          <p class="proj-desc">Crea y documenta una plantilla de planeación de clase semanal/mensual que use IA (ChatGPT, Gemini) para generar contenidos diferenciados automáticamente.</p>
+          <div class="proj-tags"><span class="ptag">IA</span><span class="ptag">Planeación</span><span class="ptag">Plantilla</span><span class="ptag">Producto Digital</span></div>
+          <div class="proj-hint">🎯 Puede venderse como producto digital a otros docentes</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- SERVICIOS -->
+<section id="servicios">
+  <div class="container">
+    <div class="sec-eyebrow">Servicios</div>
+    <h2 class="sec-title">¿En qué te puedo ayudar?</h2>
+    <p class="sec-sub">Servicios para instituciones educativas, docentes y empresas que quieren innovar en formación.</p>
+    <div class="serv-grid reveal">
+      <div class="serv-card">
+        <div class="serv-ico">🤖</div>
+        <div class="serv-title">Asesoría en IA para Educación</div>
+        <p class="serv-desc">Te guío en cómo integrar herramientas de IA (ChatGPT, Gemini, Canva AI) en tu práctica docente o institución educativa para ahorrar tiempo y mejorar resultados.</p>
+        <div class="serv-price">Sesión desde ~$50 USD</div>
+      </div>
+      <div class="serv-card">
+        <div class="serv-ico">🎓</div>
+        <div class="serv-title">Capacitación Google Workspace</div>
+        <p class="serv-desc">Talleres prácticos para equipos docentes o administrativos en el uso efectivo de Google Classroom, Sheets, Drive y Meet en entornos educativos.</p>
+        <div class="serv-price">Taller desde ~$80 USD</div>
+      </div>
+      <div class="serv-card">
+        <div class="serv-ico">📐</div>
+        <div class="serv-title">Diseño de Currículum Digital</div>
+        <p class="serv-desc">Diseño y estructuración de currículos, unidades didácticas y secuencias de aprendizaje adaptadas a entornos virtuales o semipresenciales.</p>
+        <div class="serv-price">Desde ~$100 USD</div>
+      </div>
+      <div class="serv-card">
+        <div class="serv-ico">📊</div>
+        <div class="serv-title">Sistemas de Evaluación Digital</div>
+        <p class="serv-desc">Creo sistemas de seguimiento y evaluación del rendimiento estudiantil en Google Sheets con automatización y visualización de datos por estudiante.</p>
+        <div class="serv-price">Desde ~$70 USD</div>
+      </div>
+      <div class="serv-card">
+        <div class="serv-ico">✍️</div>
+        <div class="serv-title">Contenido Educativo con IA</div>
+        <p class="serv-desc">Generación de planes de clase, guías de aprendizaje, rúbricas y materiales didácticos diferenciados usando IA y metodologías pedagógicas actuales.</p>
+        <div class="serv-price">Desde ~$40 USD</div>
+      </div>
+      <div class="serv-card">
+        <div class="serv-ico">🏫</div>
+        <div class="serv-title">Consultoría EdTech Institucional</div>
+        <p class="serv-desc">Acompañamiento a instituciones educativas en el proceso de transformación digital: diagnóstico, plan de implementación y capacitación de docentes.</p>
+        <div class="serv-price">Cotización según alcance</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCIA -->
+<section id="experiencia">
+  <div class="container">
+    <div class="sec-eyebrow">Trayectoria</div>
+    <h2 class="sec-title">Experiencia Profesional</h2>
+    <p class="sec-sub">Más de 7 años transformando el aula con tecnología, innovación pedagógica y liderazgo educativo.</p>
+    <div class="timeline reveal">
+
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-top">
+          <div class="tl-role">Docente de Español, Comprensión Lectora y Líder de Nivel</div>
+          <span class="tl-period">2023 – Actualidad</span>
+        </div>
+        <div class="tl-company">Colegio Bilingüe Maximino Poitiers · Bogotá D.C.</div>
+        <ul class="tl-list">
+          <li>Lideré el nivel de preescolar, grado 1° y 2°: consolidé reportes de seguimiento académico coordinando con 3 docentes del nivel.</li>
+          <li>Integré Google Workspace como eje central del proceso de enseñanza y gestión del aula.</li>
+          <li>Implementé herramientas de IA para generar contenidos diferenciados y planes de clase adaptados.</li>
+          <li>Diseñé sistemas de evaluación en Google Sheets con seguimiento automatizado del rendimiento estudiantil.</li>
+          <li>Capacité a docentes nuevos en el uso de herramientas digitales y la plataforma institucional.</li>
+        </ul>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-top">
+          <div class="tl-role">Docente de Preescolar</div>
+          <span class="tl-period">2018 – 2022</span>
+        </div>
+        <div class="tl-company">Centro de Integración Educativa del Norte · Bogotá D.C.</div>
+        <ul class="tl-list">
+          <li>Implementé recursos digitales y plataformas educativas para enriquecer el aprendizaje de niños de 3 a 6 años.</li>
+          <li>Diseñé programas de lectoescritura y razonamiento lógico-matemático con enfoque lúdico-tecnológico.</li>
+          <li>Elaboré informes académicos digitales y planeadores con herramientas ofimáticas.</li>
+          <li>Desarrollé estrategias pedagógicas para fortalecer atención, concentración y memoria.</li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- CONTACTO -->
+<section id="contacto">
+  <div class="container">
+    <div class="sec-eyebrow" style="color:#6EE7A0">Contacto</div>
+    <h2 class="sec-title" style="color:white">Trabajemos juntos</h2>
+    <p class="sec-sub" style="color:rgba(255,255,255,0.5)">¿Quieres transformar tu aula o institución con tecnología e IA? Escríbeme.</p>
+    <div class="contacto-grid reveal">
+      <div>
+        <div class="co-item"><div class="co-ico">📞</div><div class="co-info"><div class="lbl">Teléfono / WhatsApp</div><div class="val">+57 322 306 77 45</div></div></div>
+        <div class="co-item"><div class="co-ico">✉️</div><div class="co-info"><div class="lbl">Correo electrónico</div><div class="val"><a href="mailto:wsalgadoani@gmail.com">wsalgadoani@gmail.com</a></div></div></div>
+        <div class="co-item"><div class="co-ico">📍</div><div class="co-info"><div class="lbl">Ubicación</div><div class="val">Bogotá D.C., Colombia · Presencial y remoto</div></div></div>
+      </div>
+      <div class="cta-box">
+        <h3>¿Lista para empezar?</h3>
+        <p>Cuéntame sobre tu proyecto, institución o necesidad de formación. Respondo en menos de 24 horas.</p>
+        <a href="mailto:wsalgadoani@gmail.com?subject=Consulta Portafolio – Wendy Salgado" class="btn-solid">Enviar mensaje →</a>
+        <br><br>
+        <p style="font-size:0.74rem;color:rgba(255,255,255,0.3);">También disponible para talleres presenciales en Bogotá</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>© 2025 <span>Wendy Salgado Anichiarico</span> · Docente EdTech · Bogotá D.C., Colombia</p>
+</footer>
+
+<script>
+  const obs = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+
+  const secs = document.querySelectorAll('section[id]');
+  const links = document.querySelectorAll('.nav-links a');
+  window.addEventListener('scroll', () => {
+    let cur = '';
+    secs.forEach(s => { if (window.scrollY >= s.offsetTop - 80) cur = s.id; });
+    links.forEach(a => { a.style.color = a.getAttribute('href') === `#${cur}` ? 'white' : ''; });
+  });
+</script>
+</body>
+</html>
